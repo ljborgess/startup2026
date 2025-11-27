@@ -1,0 +1,210 @@
+/* Reset Básico */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body {
+    background-color: #f0f2f5; /* Fundo cinza bem suave e moderno */
+    color: #1f2937;
+}
+
+/* --- Cabeçalho --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%; /* 5% de margem lateral para respirar */
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra suave */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-text { 
+    font-weight: 900; 
+    font-size: 1.5rem; 
+    color: #2563eb; 
+    line-height: 1; 
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+.slogan { margin-left: 15px; color: #9ca3af; font-size: 0.8rem; border-left: 1px solid #ddd; padding-left: 15px;}
+
+.user-profile { display: flex; align-items: center; gap: 15px; cursor: pointer; }
+.user-info { text-align: right; }
+.user-name { display: block; font-weight: bold; color: #374151; }
+.user-email { color: #9ca3af; font-size: 0.75rem; }
+
+.avatar-placeholder { 
+    width: 45px; 
+    height: 45px; 
+    background: #e5e7eb; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* --- Corpo Principal --- */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.welcome-section { margin-bottom: 50px; }
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    color: #111827;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+/* --- Busca e Botões --- */
+.search-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.search-input-container {
+    flex: 2; /* Ocupa 2x mais espaço que o botão */
+    display: flex;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.search-input-container:focus-within {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.search-input-container input {
+    flex: 1;
+    border: none;
+    padding: 15px 20px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-btn {
+    background: white;
+    color: #2563eb;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.create-room-btn {
+    flex: 1;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 1rem;
+    min-width: 150px;
+}
+
+.create-room-btn:hover { background: #1d4ed8; transform: translateY(-2px); }
+
+/* --- Grid de Cards --- */
+.forums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 30px;
+}
+
+/* Estilo Base do Card */
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border: 1px solid #f3f4f6;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.card:hover { 
+    top: -10px; /* Sobe um pouquinho */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #bfdbfe;
+}
+
+/* Destaque (ocupa 2 colunas se a tela for grande) */
+.card-highlight {
+    background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+    border: 2px solid #dbeafe;
+}
+@media (min-width: 768px) {
+    .card-highlight { grid-column: span 2; }
+}
+
+.tag { 
+    color: #ea580c; 
+    font-weight: 700; 
+    font-size: 0.8rem; 
+    text-transform: uppercase; 
+    margin-bottom: 10px; 
+    display: inline-block;
+}
+
+.card h2 { 
+    color: #111827; 
+    margin-bottom: 8px; 
+    font-size: 1.5rem; 
+    font-weight: 700;
+}
+
+.meta { color: #6b7280; font-size: 0.9rem; margin-bottom: 15px; }
+
+.desc { 
+    color: #4b5563; 
+    font-size: 1rem; 
+    line-height: 1.6; 
+    margin-bottom: 25px; 
+}
+
+.spacer { flex: 1; }
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 15px;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.badge {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.enter-btn {
+    background: transparent;
+    color: #2563eb;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}

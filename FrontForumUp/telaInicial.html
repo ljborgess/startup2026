@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech4um</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Tech4um</div>
+        <div class="auth-buttons">
+            <button class="btn-login" onclick="window.location.href='login.html'">Entrar</button>
+            <button class="btn-register" onclick="window.location.href='cadastro.html'">Criar conta</button>
+        </div>
+    </header>
+
+    <div class="background-cloud">
+        <div class="floating-chat p1">Java ou Python? 🐍</div>
+        <div class="floating-chat p2">Erro 404 no deploy 😭</div>
+        <div class="floating-chat p3">React vs Vue</div>
+        <div class="floating-chat p4">Vagas Junior 🚀</div>
+        <div class="floating-chat p5">C# é vida</div>
+        <div class="floating-chat p6">Docker na prática</div>
+        <div class="floating-chat p7">Alguém ajuda com CSS?</div>
+        <div class="floating-chat p8">IA vai roubar meu emprego?</div>
+        <div class="floating-chat p9">Linux Tips 🐧</div>
+    </div>
+
+    <main class="center-content">
+        <h1 class="main-title">Título principal</h1>
+        <p class="subtitle">Subtítulo</p>
+
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Busque por um tópico (ex: javascript, design...)">
+            <button class="search-btn" onclick="pesquisar()">🔍</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; Rodapé</p>
+    </footer>
+
+    <script>
+        // Lógica simples de redirecionamento
+        function pesquisar() {
+            const termo = document.getElementById('searchInput').value;
+            if(termo) {
+                // Aqui você redirecionaria para a tela de resultados
+                // Por enquanto, vamos simular indo para o dashboard
+                alert("Você pesquisou por: " + termo + ". Redirecionando...");
+                window.location.href = 'dashboard.html'; 
+            } else {
+                alert("Digite algo para buscar!");
+            }
+        }
+        
+        // Enter também funciona
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') pesquisar();
+        });
+    </script>
+</body>
+</html>

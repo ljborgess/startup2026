@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech4um - Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <span class="logo-text">Tech<br>4um</span>
+            <span class="slogan">Conectando desenvolvedores</span>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-info">
+                <span class="user-name">Olá, Dev!</span>
+                <span class="user-email">usuario@tech4um.com</span>
+            </div>
+            <div class="avatar-placeholder">👤</div>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        
+        <section class="welcome-section">
+            <h1>Encontre sua comunidade<br>e comece a codar.</h1>
+            
+            <div class="search-row">
+                <div class="search-input-container">
+                    <input type="text" placeholder="Qual tecnologia você quer discutir hoje?">
+                    <button class="search-btn">➔</button>
+                </div>
+                <button class="create-room-btn">Criar Nova Sala</button>
+            </div>
+        </section>
+
+        <section class="forums-grid">
+            
+            <div class="card card-highlight">
+                <span class="tag">Em Alta 🔥</span>
+                <h2>Desenvolvimento Web Moderno</h2>
+                <p class="meta">45 pessoas online • Criado por Admin</p>
+                <p class="desc">Discussões sobre as novas stacks do mercado, frameworks JS e boas práticas de CSS.</p>
+                <div class="card-footer">
+                    <button class="enter-btn">Entrar na Sala</button>
+                    <span class="badge">+99 msgs</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Dúvidas de Python & IA</h2>
+                <p class="meta">32 pessoas online</p>
+                <div class="spacer"></div>
+                <div class="card-footer">
+                    <span>Host: <strong>DevSenior</strong></span>
+                    <span class="badge">Ativo</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Carreira Internacional</h2>
+                <p class="meta">12 pessoas online</p>
+                <div class="spacer"></div>
+                <div class="card-footer">
+                    <span>Host: <strong>Recruiter</strong></span>
+                    <span class="badge">Novo</span>
+                </div>
+            </div>
+
+             <div class="card">
+                <h2>Showoff: Mostre seu projeto</h2>
+                <p class="meta">80 pessoas online</p>
+                <div class="spacer"></div>
+                <div class="card-footer">
+                    <span>Host: <strong>Comunidade</strong></span>
+                    <span class="badge">🔥</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Café & Off-topic ☕</h2>
+                <p class="meta">10 pessoas online</p>
+                <div class="spacer"></div>
+                <div class="card-footer">
+                    <span>Host: <strong>Moderador</strong></span>
+                    <span class="badge">Livre</span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+       // Script simples para linkar os cards ao chat
+       const cards = document.querySelectorAll('.card');
+       cards.forEach(card => {
+           card.addEventListener('click', () => {
+               // Aqui futuramente checaremos qual ID de sala foi clicado
+               window.location.href = 'chat.html'; 
+           });
+       });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="center-content">
+    <h1>Criar Conta</h1>
+
+    <form onsubmit="enviarCadastro(event)" style="display:flex; flex-direction:column; gap:10px;">
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="senha" placeholder="Senha" required>
+        <input type="text" id="telefone" placeholder="Telefone">
+
+        <button type="submit" class="btn-register">Cadastrar</button>
+    </form>
+</main>
+
+<script>
+    // Essa é a função que o formulário chama
+    async function enviarCadastro(event) {
+        event.preventDefault(); // 1. PARE! Não recarregue a página. Deixa o JS assumir.
+
+        // 2. Coleta os dados dos inputs
+        const dadosUsuario = {
+            nome: document.getElementById('nome').value,
+            email: document.getElementById('email').value,
+            senha: document.getElementById('senha').value,
+            telefone: document.getElementById('telefone').value,
+            regiao: "Brasil" // O Java pede 'regiao', mas não pusemos input, então vai fixo.
+        };
+
+        //  Conversar com o Java
+        try {
+            const resposta = await fetch('http://localhost:8080/client/register', {
+                method: 'POST', // Estamos enviando dados
+                headers: {
+                    'Content-Type': 'application/json' // "Ei Java, estou mandando JSON!"
+                },
+                body: JSON.stringify(dadosUsuario) // Transforma o objeto JS em texto JSON
+            });
+
+            // 4. Analisa a resposta do porteiro
+            if (resposta.ok) {
+                alert("Sucesso! Conta criada.");
+                window.location.href = "login.html"; // Manda o usuário para o login
+            } else {
+                alert("Erro! Talvez o email já exista.");
+            }
+        } catch (erro) {
+            console.error("Erro técnico:", erro);
+            alert("O servidor Java está desligado?");
+        }
+    }
+</script>
+</body>
+</html>
