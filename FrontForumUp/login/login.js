@@ -20,7 +20,7 @@ async function enviarLogin(event) {
 
     if (textoResposta.includes("bem-sucedido")) {
     alert(textoResposta);
-    window.location.href = "dashboard.html"; // Entra no sistema!
+    window.location.href = "../dashboard/dashboard.html"; // Entra no sistema!
 } else {
     alert("Ops: " + textoResposta);
 }
