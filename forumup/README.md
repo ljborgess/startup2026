@@ -64,9 +64,6 @@ Abra no IntelliJ / Eclipse
 
 Execute o projeto pelo Spring Boot
 
-Use o Postman para testar os endpoints ou  use o localhost padrão, pois foi acrescentado o SWAGGER
+Banco de dados PostgreSQL
+com o olho "Raio-X" Dbeaver + Uso do Docker
 
-http://localhost:8080/swagger-ui/index.html#/Clientes/register
-
-Acesse o H2 (se estiver ativo):
-/h2-console
