@@ -1,3 +1,3 @@
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "startup2026-production.up.railway.app";
 
 
