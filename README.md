@@ -39,7 +39,7 @@ Crie um banco de dados no PostgreSQL chamado `postgres` (ou ajuste no `applicati
 ### 2. Executando o Backend
 ```bash
 # Clone o repositório
-git clone https://github.com/SEU-USUARIO/startup2026.git
+git clone https://github.com/SEU-USUARIO/startup2026.git ou https://gitlab.com/lluborges004/startup2026
 
 # Entre na pasta do backend
 cd startup2026/forumup
