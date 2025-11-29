@@ -1,31 +1,46 @@
-
-async function enviarLogin(event) {
-    event.preventDefault(); // 1. Evita recarregamento
+async function fazerLogin(event) {
+    event.preventDefault();
 
     const email = document.getElementById('emailLogin').value;
     const senha = document.getElementById('senhaLogin').value;
 
-    // 2. Monta a URL com os dados pendurados
-    // É assim que o @RequestParam do Java lê os dados
-    const urlDestino = `http://localhost:8080/client/login?email=${email}&senha=${senha}`;
-
     try {
-    // 3. Faz a chamada (sem 'body' e sem 'headers' de JSON)
-    const resposta = await fetch(urlDestino, {
-    method: 'POST'
-});
+        //  A URL agora é apenas '/login' (sem /client)
+        const response = await fetch('http://localhost:8080/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // MUDANÇA 2: Avisa que é JSON
+            },
+            //  Envia os dados no corpo (body), não na URL
+            body: JSON.stringify({
+                email: email,
+                senha: senha
+            })
+        });
 
-    // O Java retorna um texto simples ("Login bem-sucedido" ou erro)
-    const textoResposta = await resposta.text();
+        if (response.ok) {
+            // ... dentro do if (response.ok) ...
 
-    if (textoResposta.includes("bem-sucedido")) {
-    alert(textoResposta);
-    window.location.href = "../dashboard/dashboard.html"; // Entra no sistema!
-} else {
-    alert("Ops: " + textoResposta);
-}
-} catch (erro) {
-    console.error("Erro:", erro);
-    alert("Erro ao conectar no servidor.");
-}
+            const dados = await response.json();
+
+            // --- ORA DA VERDADE ---
+            console.log("JSON RECEBIDO:", dados);
+            // Tem que aparecer: { token: "eyJhbG..." }
+
+            // Se o Java estiver certo, isso vai funcionar:
+            if (dados.token) {
+                localStorage.setItem('token', dados.token);
+                alert('Login Sucesso! Redirecionando...');
+                window.location.href = "../dashboard/dashboard.html";
+            } else {
+                alert('O servidor respondeu, mas não mandou o token!');
+            }
+        } else {
+            alert('Falha no login. Verifique suas credenciais.');
+        }
+
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao conectar com o servidor.');
+    }
 }

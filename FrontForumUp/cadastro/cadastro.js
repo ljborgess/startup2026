@@ -1,5 +1,5 @@
 
-    // Seus scripts de JS aqui (sem alterações, pois estão corretos para a funcionalidade)
+    //
     async function enviarCadastro(event) {
     event.preventDefault();
     // ... (restante do seu código JS)
