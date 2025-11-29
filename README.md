@@ -39,7 +39,7 @@ Crie um banco de dados no PostgreSQL chamado `postgres` (ou ajuste no `applicati
 ### 2. Executando o Backend
 ```bash
 # Clone o repositório
-git clone https://github.com/SEU-USUARIO/startup2026.git
+git clone https://github.com/SEU-USUARIO/startup2026.git ou https://gitlab.com/lluborges004/startup2026
 
 # Entre na pasta do backend
 cd startup2026/forumup
@@ -64,13 +64,6 @@ O projeto está configurado para deploy fácil em nuvem.
 - **Backend:** Configurado para **Railway** (usa variáveis de ambiente para DB e Porta).
 - **Frontend:** Pode ser hospedado em **Vercel** ou **Netlify**.
 
-### Passos Rápidos para Deploy:
-1. Suba o backend no Railway e conecte um banco PostgreSQL.
-2. Copie a URL gerada pelo Railway.
-3. Atualize o arquivo `FrontForumUp/config.js` com a nova URL.
-4. Suba o frontend no Vercel.
-
----
 
 
 ---
