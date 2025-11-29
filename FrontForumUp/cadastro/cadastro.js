@@ -22,11 +22,20 @@ async function enviarCadastro(event) {
             alert("Sucesso! Conta criada.");
             window.location.href = "../login/login.html";
         } else {
-            alert("Erro ao cadastrar. Verifique se o email já existe.");
+            // Tenta ler o erro detalhado
+            let msg = "Erro ao cadastrar.";
+            try {
+                const erroBody = await resposta.text(); // Tenta ler como texto primeiro
+                msg = `Erro do Servidor (${resposta.status}): ${erroBody}`;
+            } catch (e) {
+                msg = `Erro (${resposta.status})`;
+            }
+            alert(msg);
+            console.error("Erro Cadastro:", msg);
         }
 
     } catch (erro) {
         console.error("Erro no cadastro:", erro);
-        alert("Erro ao conectar com o servidor.");
+        alert("Erro de Conexão. O servidor pode estar desligado.");
     }
 }

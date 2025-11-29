@@ -5,7 +5,10 @@ async function fazerLogin(event) {
     const senha = document.getElementById('senhaLogin').value;
 
     try {
-        const response = await fetch(`${API_BASE_URL}/login`, {
+        const urlCompleta = `${API_BASE_URL}/login`;
+        console.log("Tentando acessar URL:", urlCompleta); // DEBUG: Mostra a URL no console
+
+        const response = await fetch(urlCompleta, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,11 +31,23 @@ async function fazerLogin(event) {
                 alert('O servidor respondeu, mas não enviou o token.');
             }
         } else {
-            alert('Falha no login. Verifique suas credenciais.');
+            // Tenta ler a mensagem de erro do servidor, se houver
+            let mensagemErro = 'Falha no login. Verifique suas credenciais.';
+            try {
+                const erroJson = await response.json();
+                if (erroJson.message || erroJson.erro) {
+                    mensagemErro = `Erro do Servidor: ${erroJson.message || erroJson.erro}`;
+                }
+            } catch (e) {
+                // Se não for JSON, usa o status
+                mensagemErro = `Erro no Login (Status: ${response.status})`;
+            }
+            alert(mensagemErro);
+            console.error("Erro Login:", response.status, response.statusText);
         }
 
     } catch (error) {
         console.error('Erro ao fazer login:', error);
-        alert('Erro ao conectar com o servidor.');
+        alert('Erro de Conexão: Verifique se o servidor está online.');
     }
 }
