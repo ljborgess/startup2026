@@ -20,7 +20,7 @@
 });
     if (resposta.ok) {
     alert("Sucesso! Conta criada.");
-    window.location.href = "login.html";
+    window.location.href = "../login/login.html";
 } else {
     alert("Erro! Talvez o email já exista.");
 }

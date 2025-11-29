@@ -6,7 +6,7 @@ function pesquisar() {
     // Aqui você redirecionaria para a tela de resultados
     // Por enquanto, vamos simular indo para o dashboard
     alert("Você pesquisou por: " + termo + ". Redirecionando...");
-    window.location.href = 'dashboard.html';
+    window.location.href = '../dashboard/dashboard.html';
 } else {
     alert("Digite algo para buscar!");
 }
