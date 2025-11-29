@@ -11,7 +11,6 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/client")
-// 1. @Tag: Cria uma seção separada na tela do Swagger só para Clientes
 @Tag(name = "Clientes", description = "Endpoints para gerenciamento de clientes")
 public class ClientController {
 
@@ -35,26 +34,13 @@ public class ClientController {
         return service.cadastrar(client);
     }
 
-    // LOGIN
-    @Operation(summary = "Login de usuário", description = "Verifica email e senha via parâmetros de URL")
-    @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String senha) {
-        Client c = service.logar(email, senha);
 
-        if (c == null) {
-            return "Login falhou: email ou senha incorretos.";
-        }
+    // Agora o login é feito exclusivamente pelo AuthController
 
-        return "Login bem-sucedido! Bem-vindo, " + c.getNome();
-    }
     // DELETE
-    @Operation(summary = "deletar client", description = "Remove o cliente do banco de dados")
-    @PostMapping("/delete/{id}")
+    @Operation(summary = "Deletar client", description = "Remove o cliente do banco de dados")
+    @DeleteMapping("/delete/{id}") // Melhor usar DeleteMapping para deletar
     public void delete(@PathVariable long id) {
         service.remove(id);
-
-
-
     }
-
 }

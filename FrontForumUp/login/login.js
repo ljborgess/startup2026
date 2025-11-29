@@ -5,13 +5,11 @@ async function fazerLogin(event) {
     const senha = document.getElementById('senhaLogin').value;
 
     try {
-        //  A URL agora é apenas '/login' (sem /client)
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch(`${API_BASE_URL}/login`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json' // MUDANÇA 2: Avisa que é JSON
+                'Content-Type': 'application/json'
             },
-            //  Envia os dados no corpo (body), não na URL
             body: JSON.stringify({
                 email: email,
                 senha: senha
@@ -19,28 +17,22 @@ async function fazerLogin(event) {
         });
 
         if (response.ok) {
-            // ... dentro do if (response.ok) ...
-
             const dados = await response.json();
+            console.log("Login - Resposta do servidor:", dados);
 
-            // --- ORA DA VERDADE ---
-            console.log("JSON RECEBIDO:", dados);
-            // Tem que aparecer: { token: "eyJhbG..." }
-
-            // Se o Java estiver certo, isso vai funcionar:
             if (dados.token) {
                 localStorage.setItem('token', dados.token);
-                alert('Login Sucesso! Redirecionando...');
+                alert('Login com sucesso! Redirecionando...');
                 window.location.href = "../dashboard/dashboard.html";
             } else {
-                alert('O servidor respondeu, mas não mandou o token!');
+                alert('O servidor respondeu, mas não enviou o token.');
             }
         } else {
             alert('Falha no login. Verifique suas credenciais.');
         }
 
     } catch (error) {
-        console.error('Erro:', error);
+        console.error('Erro ao fazer login:', error);
         alert('Erro ao conectar com o servidor.');
     }
 }
